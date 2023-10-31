@@ -60,6 +60,7 @@ return (
             name="project_name"
             value={formData.project_name}
             onChange={handleChange}
+            required
             />
             </label>
             <br />
@@ -72,6 +73,7 @@ return (
             name="client"
             value={formData.client}
             onChange={handleChange}
+            required
             />
             </label>
             <br />
