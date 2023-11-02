@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { listReservations } from "../utils/api";
+import { listProjects } from "../utils/api";
 import ErrorAlert from "../layout/ErrorAlert";
 import { useHistory } from "react-router-dom";
+import ProjectCard from "../projectsCard/ProjectCard";
 
 /**
  * Defines the dashboard page.
@@ -14,21 +15,22 @@ function Dashboard() {
   const [projectsError, setProjectsError] = useState(null);
   const history = useHistory()
 
-/* NEED TO GET FUNCTIONING
+
   useEffect(loadDashboard, []);
 
   function loadDashboard() {
     const abortController = new AbortController();
     setProjectsError(null);
-    listReservations({ date }, abortController.signal)
-      .then(setReservations)
-      .catch(setReservationsError);
+    listProjects(abortController.signal)
+      .then(setProjects)
+      .catch(setProjectsError);
     return () => abortController.abort();
   }
-  */
+
  function createProject(){
   history.push("/new")
  }
+ 
 
   return (
     <div>
@@ -37,38 +39,69 @@ function Dashboard() {
     </header>
     <main>
       <button type="button" className="btn btn-primary" onClick={createProject}>Create Project</button>
-        <div className="row justify-content-around">
+        <div className="row">
           <span className="border">
-          <div className="col-md-2 mb-4">
+          <div className="col">
             <h2>Discovery</h2>
+            {projects.map((project) => {
+              if(project.status === "Discovery"){
+               return <ProjectCard project={project} />
+              }
+            })}
           </div>
           </span>
           <span className="border">
-          <div className="col-md-2 mb-4">
+          <div className="col">
             <h2>Waiting</h2>
+            {projects.map((project) => {
+              if(project.status === "Waiting"){
+               return <ProjectCard project={project} />
+              }
+            })}
           </div>
           </span>
           <span className="border">
-          <div className="col-md-2 mb-4">
+          <div className="col">
             <h2>In-Progress</h2>
+            {projects.map((project) => {
+              if(project.status === "In-Progress"){
+               return <ProjectCard project={project} />
+              }
+            })}
           </div>
           </span>
           <span className="border">
-          <div className="col-md-2 mb-4">
+          <div className="col">
             <h2>Sent</h2>
+            {projects.map((project) => {
+              if(project.status === "Sent"){
+               return <ProjectCard project={project} />
+              }
+            })}
           </div>
           </span>
           <span className="border">
-          <div className="col-md-2 mb-4">
+          <div className="col">
             <h2>Complete</h2>
+            {projects.map((project) => {
+              if(project.status === "Complete"){
+               return <ProjectCard project={project} />
+              }
+            })}
           </div>
           </span>
           <span className="border">
-          <div className="col-md-2 mb-4">
+          <div className="col">
             <h2>Archive</h2>
+            {projects.map((project) => {
+              if(project.status === "Archive"){
+               return <ProjectCard project={project} />
+              }
+            })}
           </div>
           </span>
       </div>
+      
       <ErrorAlert error={projectsError} />
     </main>
     </div>

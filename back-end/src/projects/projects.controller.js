@@ -6,6 +6,13 @@ async function create(req, res) {
   res.status(201).json({data})
 }
 
+async function list(req, res, next){
+  
+  const data = await projectsService.list()
+  res.json({data})
+}
+
 module.exports = {
   create,
+  list
 };

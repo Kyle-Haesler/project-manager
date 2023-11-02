@@ -57,17 +57,14 @@ async function fetchJson(url, options, onCancel) {
  * @returns {Promise<[reservation]>}
  *  a promise that resolves to a possibly empty array of reservation saved in the database.
  */
-
-export async function listReservations(params, signal) {
+// GET /projects
+// returns all of the projects from the database
+export async function listProjects(signal) {
   const url = new URL(`${API_BASE_URL}/projects`);
-  Object.entries(params).forEach(([key, value]) =>
-    url.searchParams.append(key, value.toString())
-  );
   return await fetchJson(url, { headers, signal }, [])
-    .then(formatReservationDate)
-    .then(formatReservationTime);
 }
 
+// POST /projects
 export async function createProject(newProject, signal){
   const url = new URL(`${API_BASE_URL}/projects`);
   const method = "POST";
