@@ -34,72 +34,60 @@ function Dashboard() {
 
   return (
     <div>
-    <header className="jumbotron jumbotron-fluid bg-primary text-white text-center">
+    <header className="jumbotron jumbotron-fluid" style={{background: "black", color: "white", textAlign: "center"}}>
       <h1 className="display-4">Project Manager</h1>
     </header>
     <main>
       <button type="button" className="btn btn-primary" onClick={createProject}>Create Project</button>
         <div className="row">
-          <span className="border">
-          <div className="col">
-            <h2>Discovery</h2>
+          <div className="col-md-2 mb-4" style={{background: "#fe4365"}}>
+            <h2 style={{color: "white", border:"4px solid white"}}>Discovery</h2>
             {projects.map((project) => {
               if(project.status === "Discovery"){
                return <ProjectCard project={project} />
               }
             })}
           </div>
-          </span>
-          <span className="border">
-          <div className="col">
-            <h2>Waiting</h2>
+          <div className="col-md-2 mb-4" style={{background: "#fc9d9a"}}>
+            <h2 style={{color: "white", border:"4px solid white"}}>Waiting</h2>
             {projects.map((project) => {
               if(project.status === "Waiting"){
                return <ProjectCard project={project} />
               }
             })}
           </div>
-          </span>
-          <span className="border">
-          <div className="col">
-            <h2>In-Progress</h2>
+          <div className="col-md-2 mb-4" style={{background: "#f9cdad"}}>
+            <h2 style={{color: "white", border:"4px solid white"}}>In-Progress</h2>
             {projects.map((project) => {
               if(project.status === "In-Progress"){
                return <ProjectCard project={project} />
               }
             })}
           </div>
-          </span>
-          <span className="border">
-          <div className="col">
-            <h2>Sent</h2>
+          <div className="col-md-2 mb-4" style={{background: "#c8c8a9"}}>
+            <h2 style={{color: "white", border:"4px solid white"}}>Sent</h2>
             {projects.map((project) => {
               if(project.status === "Sent"){
                return <ProjectCard project={project} />
               }
             })}
-          </div>
-          </span>
-          <span className="border">
-          <div className="col">
-            <h2>Complete</h2>
+          </div>  
+          <div className="col-md-2 mb-4" style={{background: "#83af9b"}}>
+            <h2 style={{color: "white", border:"4px solid white"}}>Complete</h2>
             {projects.map((project) => {
               if(project.status === "Complete"){
                return <ProjectCard project={project} />
               }
             })}
           </div>
-          </span>
-          <span className="border">
-          <div className="col">
-            <h2>Archive</h2>
+          <div className="col-md-2 mb-4" style={{background: "#ff0151"}}>
+            <h2 style={{color: "white", border:"4px solid white"}}>Archive</h2>
             {projects.map((project) => {
               if(project.status === "Archive"){
                return <ProjectCard project={project} />
               }
             })}
           </div>
-          </span>
       </div>
       
       <ErrorAlert error={projectsError} />

@@ -75,3 +75,17 @@ export async function createProject(newProject, signal){
   const body = JSON.stringify({ data: newProject });
   return await fetchJson(url, { method, headers, body, signal }, []);
 }
+
+// PUT /project/:project_id
+export async function updateProjectStatus(status, project_id, signal){
+  const url = new URL(`${API_BASE_URL}/projects/${project_id}`);
+  const method = "PUT";
+  const headers = {
+    Accept: "application/json",
+    "Content-Type": "application/json",
+  };
+  const body = JSON.stringify({ data: {status} });
+  
+  return await fetchJson(url, { method, headers, body, signal }, []);
+}
+

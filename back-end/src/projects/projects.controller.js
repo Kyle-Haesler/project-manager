@@ -12,7 +12,14 @@ async function list(req, res, next){
   res.json({data})
 }
 
+async function updateStatus(req, res, next){
+  const {project_id} = req.params
+  const data = await projectsService.updateStatus(project_id, req.body.data)
+  res.json({data})
+}
+
 module.exports = {
   create,
-  list
+  list,
+  updateStatus
 };

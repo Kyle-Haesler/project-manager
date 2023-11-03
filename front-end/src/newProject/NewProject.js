@@ -47,7 +47,7 @@ async function handleSubmit(event){
 
 return (
     <div>
-        <header className="jumbotron jumbotron-fluid bg-primary text-white text-center">
+        <header className="jumbotron jumbotron-fluid" style={{background: "black", color: "white", textAlign: "center"}}>
       <h1 className="display-4">Create New Project</h1>
     </header>
         <form onSubmit={handleSubmit} className="form-group">
