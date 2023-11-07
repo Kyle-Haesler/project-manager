@@ -11,15 +11,27 @@ async function list(req, res, next){
   const data = await projectsService.list()
   res.json({data})
 }
+async function read(req, res, next){
+  const {project_id} = req.params
+  const data = await projectsService.read(project_id)
+  res.json({data})
+}
 
 async function updateStatus(req, res, next){
   const {project_id} = req.params
   const data = await projectsService.updateStatus(project_id, req.body.data)
   res.json({data})
 }
+async function update(req, res, next){
+  const {project_id} = req.params
+  const data = await projectsService.update(project_id, req.body.data)
+  res.json({data})
+}
 
 module.exports = {
   create,
   list,
-  updateStatus
+  read,
+  updateStatus,
+  update
 };

@@ -30,6 +30,7 @@ function handleChange(event){
 function handleCancel(){
     history.push("/")
 }
+
 async function handleSubmit(event){
     setProjectsError(null)
     event.preventDefault()

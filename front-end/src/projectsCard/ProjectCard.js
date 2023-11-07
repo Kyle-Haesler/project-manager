@@ -40,6 +40,10 @@ function ProjectCard({project}){
         return () => abortController.abort()
     }
 
+    function handleEdit(){
+        history.push(`/${project.project_id}`)
+    }
+
 
 
     return (
@@ -52,6 +56,7 @@ function ProjectCard({project}){
                 <p className="card-text">{project.notes}</p>
                 <button type="button" class="btn btn-primary" onClick={handleMoveBack}>Back</button>
                 <button type="button" class="btn btn-primary" onClick={handleMoveForward}>Forward</button>
+                <button type="button" class="btn btn-primary" onClick={handleEdit}>Edit</button>
             </div>
         </div>
     )
