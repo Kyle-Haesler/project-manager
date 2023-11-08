@@ -52,40 +52,44 @@ return (
 <header className="jumbotron jumbotron-fluid" style={{background: "black", color: "white", textAlign: "center"}}>
 <h1 className="display-4">Edit Project</h1>
 </header>
-<form onSubmit={handleSubmit} className="form-group">
-    <label htmlFor="project_name">
-        Project Name:
+<div style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
+<form onSubmit={handleSubmit} style={{width: "600px", backgroundColor: "lightgrey"}}>
+    <label htmlFor="project_name" style={{width: "100%"}}>
+        <b>Project Name:</b>
+        <br />
     <input
     id="project_name"
-    className="form-control"
     type="text"
     name="project_name"
     value={project.project_name}
     onChange={handleChange}
+    style={{width: "100%", borderColor: "#007BFF", marginBottom: "10px"}}
     required
     />
     </label>
     <br />
-    <label htmlFor="client">
-        Client: 
+    <label htmlFor="client" style={{width: "100%"}}>
+        <b>Client:</b>
+        <br /> 
     <input
     id="client"
-    className="form-control"
     type="text"
     name="client"
     value={project.client}
     onChange={handleChange}
+    style={{width: "100%", borderColor: "#007BFF", marginBottom: "10px"}}
     required
     />
     </label>
     <br />
-    <label htmlFor="status">Select a Status: </label>
+    <label htmlFor="status" style={{width: "100%"}}><b>Select a Status:</b></label>
+    <br />
     <select
     id="status"
     name="status"
     value={project.status}
-    className="form-control"
     onChange={handleChange}
+    style={{width: "100%", borderColor: "#007BFF", marginBottom: "10px"}}
     required
     >
         <option value="">Select a Status...</option>
@@ -93,15 +97,18 @@ return (
             <option value={status}>{status}</option>
         ))}
     </select>
-    <label htmlFor="notes">
-        Notes:
-    <input
+    <br />
+    <label htmlFor="notes" style={{width: "100%"}}>
+        <b>Notes:</b>
+        <br />
+    <textarea
     id="notes"
-    className="form-control"
     type="text"
     name="notes"
     value={project.notes}
     onChange={handleChange}
+    style={{width: "100%", height: "100px", borderColor: "#007BFF", marginBottom: "10px"}}
+    rows="4"
     />
     </label>
     <br />
@@ -109,6 +116,8 @@ return (
     <button type="button" className="btn btn-secondary" onClick={handleCancel}>Cancel</button>
 </form>
 </div>
+</div>
+
 )
 
 }

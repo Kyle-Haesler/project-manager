@@ -38,7 +38,7 @@ function Dashboard() {
       <h1 className="display-4">Project Manager</h1>
     </header>
     <main>
-      <button type="button" className="btn btn-primary" onClick={createProject}>Create Project</button>
+      <button type="button" className="btn btn-primary" onClick={createProject} style={{marginBottom: "20px"}}>Create Project</button>
         <div className="row">
           <div className="col-md-2 mb-4" style={{background: "#fe4365"}}>
             <h2 style={{color: "white", border:"4px solid white"}}>Discovery</h2>

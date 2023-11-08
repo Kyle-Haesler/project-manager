@@ -1,7 +1,7 @@
 import React from "react";
 import Routes from "./Routes";
 
-import "./Layout.css";
+
 
 /**
  * Defines the main layout of the application.
