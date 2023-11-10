@@ -80,7 +80,7 @@ export async function getProject(project_id, signal, ) {
   const url = new URL(`${API_BASE_URL}/projects/${project_id}`);
   return await fetchJson(url, { headers, signal }, [])
 }
-// PUT /project/:project_id
+// PUT /projects/:project_id
 export async function updateProjectStatus(status, project_id, signal){
   const url = new URL(`${API_BASE_URL}/projects/${project_id}`);
   const method = "PUT";
@@ -93,7 +93,14 @@ export async function updateProjectStatus(status, project_id, signal){
   return await fetchJson(url, { method, headers, body, signal }, []);
 }
 
-// PUT /project/:project_id/edit
+// DELETE /projects/:project_id
+export async function deleteProject(project_id, signal){
+  const url = new URL(`${API_BASE_URL}/projects/${project_id}`);
+  const method = "DELETE"; 
+  return await fetchJson(url, { method, headers, signal }, []);
+}
+
+// PUT /projects/:project_id/edit
 export async function updateProject(project, project_id, signal){
   const url = new URL(`${API_BASE_URL}/projects/${project_id}/edit`);
   const method = "PUT";
@@ -105,3 +112,4 @@ export async function updateProject(project, project_id, signal){
   
   return await fetchJson(url, { method, headers, body, signal }, []);
 }
+

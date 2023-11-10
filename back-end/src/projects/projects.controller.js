@@ -27,11 +27,17 @@ async function update(req, res, next){
   const data = await projectsService.update(project_id, req.body.data)
   res.json({data})
 }
+async function destroy(req, res, next){
+  const {project_id} = req.params
+  await projectsService.delete(project_id)
+  res.sendStatus(204)
+}
 
 module.exports = {
   create,
   list,
   read,
   updateStatus,
-  update
+  update,
+  delete: destroy
 };

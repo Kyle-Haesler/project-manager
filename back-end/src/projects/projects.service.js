@@ -18,6 +18,9 @@ function updateStatus(project_id, data){
 function update(project_id, project){
     return knex("projects").select("*").where("project_id", project_id).update(project, "*").then((updatedProject) => updatedProject[0])
 }
+function destroy(project_id){
+    return knex("projects").where("project_id", project_id).del()
+}
 
 
 module.exports = {
@@ -25,5 +28,6 @@ module.exports = {
     list,
     read,
     update,
-    updateStatus
+    updateStatus,
+    delete: destroy
 }

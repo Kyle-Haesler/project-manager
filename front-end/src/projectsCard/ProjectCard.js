@@ -1,6 +1,7 @@
 import ErrorAlert from "../layout/ErrorAlert";
 import { useHistory } from "react-router-dom";
 import { updateProjectStatus } from "../utils/api";
+import { deleteProject } from "../utils/api";
 // todo: add errorhandler here
 
 function ProjectCard({project}){
@@ -43,8 +44,22 @@ function ProjectCard({project}){
     function handleEdit(){
         history.push(`/${project.project_id}`)
     }
+    async function handleDelete(){
+        const abortController = new AbortController()
+        try {
+            const confirmMessage = "Are you sure you want to delete this project? This cannot be undone :/."
+            const confirmed = window.confirm(confirmMessage)
+            if(confirmed){
 
-
+            
+            await deleteProject(project.project_id, abortController.signal)
+            window.location.reload()
+        }
+    } catch (error){
+        console.error(error)
+    }
+    return () => abortController.abort()
+    }
 
     return (
         
@@ -57,6 +72,7 @@ function ProjectCard({project}){
                 <button type="button" class="btn btn-primary" onClick={handleMoveBack}>Back</button>
                 <button type="button" class="btn btn-primary" onClick={handleMoveForward}>Forward</button>
                 <button type="button" class="btn btn-primary" onClick={handleEdit}>Edit</button>
+                <button type="button" class="btn btn-danger" onClick={handleDelete}>Delete</button>
             </div>
         </div>
     )
