@@ -63,16 +63,16 @@ function ProjectCard({project}){
 
     return (
         
-        <div className="card">
-            <h5 className="card-header">Project Name: {project.project_name}</h5>
+        <div className="card" style={{marginBottom: "20px"}}>
+            <h5 className="card-header" style={{background: "black", color: "white"}}>{project.project_name}</h5>
             <div className="card-body">
-                <h5 className="card-title">Client: {project.client}</h5>
-                <h6 className="card-title">Status: {project.status}</h6>
-                <p className="card-text">{project.notes}</p>
-                <button type="button" class="btn btn-primary" onClick={handleMoveBack}>Back</button>
-                <button type="button" class="btn btn-primary" onClick={handleMoveForward}>Forward</button>
-                <button type="button" class="btn btn-primary" onClick={handleEdit}>Edit</button>
-                <button type="button" class="btn btn-danger" onClick={handleDelete}>Delete</button>
+                <p className="card-text"><b>Client: </b>{project.client}</p>
+                <p className="card-text"><b>Status: </b>{project.status}</p>
+                <p className="card-text"><b>Notes: </b>{project.notes}</p>
+                <button type="button" class="btn btn-outline-primary" onClick={handleMoveBack} style={{marginRight: "10px"}}>&larr;</button>
+                <button type="button" class="btn btn-outline-secondary" onClick={handleMoveForward} style={{marginRight: "10px"}}>&rarr;</button>
+                <button type="button" class="btn btn-outline-warning" onClick={handleEdit} style={{marginRight: "10px"}}>Edit</button>
+                <button type="button" class="btn btn-outline-danger" onClick={handleDelete}>Delete</button>
             </div>
         </div>
     )

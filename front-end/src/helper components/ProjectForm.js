@@ -18,7 +18,7 @@ function ProjectForm({pageTitle, handleSubmit, formData, handleChange, handleCan
 <h1 className="display-4">{pageTitle}</h1>
 </header>
 <div style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
-<form onSubmit={handleSubmit} style={{width: "600px", backgroundColor: "lightgrey"}}>
+<form onSubmit={handleSubmit} style={{width: "600px"}}>
     <label htmlFor="project_name" style={{width: "100%"}}>
         <b>Project Name:</b>
         <br />

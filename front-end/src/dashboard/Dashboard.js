@@ -41,7 +41,7 @@ function Dashboard() {
       <button type="button" className="btn btn-primary" onClick={createProject} style={{marginBottom: "20px"}}>Create Project</button>
         <div className="row">
           <div className="col-md-2 mb-4" style={{background: "#fe4365"}}>
-            <h2 style={{color: "white", border:"4px solid white"}}>Discovery</h2>
+            <h2 style={{color: "#fe4365", border:"4px solid black", background: "white", textAlign: "center"}}>Discovery</h2>
             {projects.map((project) => {
               if(project.status === "Discovery"){
                return <ProjectCard project={project} />
@@ -49,7 +49,7 @@ function Dashboard() {
             })}
           </div>
           <div className="col-md-2 mb-4" style={{background: "#fc9d9a"}}>
-            <h2 style={{color: "white", border:"4px solid white"}}>Waiting</h2>
+            <h2 style={{color: "#fc9d9a", border:"4px solid black", background: "white", textAlign: "center"}}>Waiting</h2>
             {projects.map((project) => {
               if(project.status === "Waiting"){
                return <ProjectCard project={project} />
@@ -57,7 +57,7 @@ function Dashboard() {
             })}
           </div>
           <div className="col-md-2 mb-4" style={{background: "#f9cdad"}}>
-            <h2 style={{color: "white", border:"4px solid white"}}>In-Progress</h2>
+            <h2 style={{color: "#f9cdad", border:"4px solid black", background: "white", textAlign: "center"}}>In-Progress</h2>
             {projects.map((project) => {
               if(project.status === "In-Progress"){
                return <ProjectCard project={project} />
@@ -65,7 +65,7 @@ function Dashboard() {
             })}
           </div>
           <div className="col-md-2 mb-4" style={{background: "#c8c8a9"}}>
-            <h2 style={{color: "white", border:"4px solid white"}}>Sent</h2>
+            <h2 style={{color: "#c8c8a9", border:"4px solid black", background: "white", textAlign: "center"}}>Sent</h2>
             {projects.map((project) => {
               if(project.status === "Sent"){
                return <ProjectCard project={project} />
@@ -73,7 +73,7 @@ function Dashboard() {
             })}
           </div>  
           <div className="col-md-2 mb-4" style={{background: "#83af9b"}}>
-            <h2 style={{color: "white", border:"4px solid white"}}>Complete</h2>
+            <h2 style={{color: "#83af9b", border:"4px solid black", background: "white", textAlign: "center"}}>Complete</h2>
             {projects.map((project) => {
               if(project.status === "Complete"){
                return <ProjectCard project={project} />
@@ -81,7 +81,7 @@ function Dashboard() {
             })}
           </div>
           <div className="col-md-2 mb-4" style={{background: "#ff0151"}}>
-            <h2 style={{color: "white", border:"4px solid white"}}>Archive</h2>
+            <h2 style={{color: "#ff0151", border:"4px solid black", background: "white", textAlign: "center"}}>Archive</h2>
             {projects.map((project) => {
               if(project.status === "Archive"){
                return <ProjectCard project={project} />
