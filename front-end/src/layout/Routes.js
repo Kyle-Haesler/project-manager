@@ -5,7 +5,7 @@ import Dashboard from "../dashboard/Dashboard";
 import NotFound from "./NotFound";
 import NewProject from "../newProject/NewProject";
 import EditProject from "../editProject/EditProject";
-
+import LoginSignUp from "../LoginSignUp/LoginSignUp.js";
 
 function Routes() {
   return (
@@ -15,6 +15,9 @@ function Routes() {
       </Route>
       <Route path="/new">
         <NewProject />
+      </Route>
+      <Route path="/loginsignup">
+        <LoginSignUp />
       </Route>
       <Route path="/:project_id">
         <EditProject />

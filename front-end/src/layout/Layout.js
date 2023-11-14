@@ -1,8 +1,6 @@
 import React from "react";
 import Routes from "./Routes";
 
-
-
 /**
  * Defines the main layout of the application.
  *
@@ -13,8 +11,8 @@ import Routes from "./Routes";
 function Layout() {
   return (
     <div className="container-fluid">
-          <Routes />
-        </div>
+      <Routes />
+    </div>
   );
 }
 
