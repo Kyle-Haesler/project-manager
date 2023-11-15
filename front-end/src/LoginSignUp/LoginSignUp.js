@@ -14,7 +14,12 @@ function LoginSignUp() {
   const [formData, setFormData] = useState({ ...initialFormState });
   function handleChange({ target }) {
     setFormData({ ...formData, [target.name]: target.value });
+  }
+  async function handleSubmit(event) {
+    event.preventDefault();
+    // need to build out backend here for new users table!
     console.log(formData);
+    setFormData({ ...initialFormState });
   }
 
   return (
@@ -24,50 +29,64 @@ function LoginSignUp() {
           <div className="text">{action}</div>
           <div className="underline"></div>
         </div>
-        <div className="inputs">
-          {action === "Log In" ? (
-            <div></div>
-          ) : (
+        <form onSubmit={handleSubmit}>
+          <div className="inputs">
+            {action === "Log In" ? (
+              <div></div>
+            ) : (
+              <div className="input">
+                <img src={user_icon} />
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder="Name"
+                  required
+                />
+              </div>
+            )}
             <div className="input">
-              <img src={user_icon} />
+              <img src={email_icon} />
               <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
+                type="email"
+                name="user_name"
+                id="user_name"
+                value={formData.user_name}
                 onChange={handleChange}
-                placeholder="Name"
+                placeholder="Email Id"
+                required
               />
             </div>
-          )}
-          <div className="input">
-            <img src={email_icon} />
-            <input
-              type="email"
-              name="user_name"
-              id="user_name"
-              value={formData.user_name}
-              onChange={handleChange}
-              placeholder="Email Id"
-            />
+            <div className="input">
+              <img src={password_icon} />
+              <input
+                type="password"
+                name="password"
+                id="password"
+                value={formData.password}
+                onChange={handleChange}
+                placeholder="Password"
+                required
+              />
+            </div>
+            <div className="submit-container">
+              <button type="submit" className="submit black">
+                Submit
+              </button>
+            </div>
           </div>
-          <div className="input">
-            <img src={password_icon} />
-            <input
-              type="password"
-              name="password"
-              id="password"
-              value={formData.password}
-              onChange={handleChange}
-              placeholder="Password"
-            />
-          </div>
-        </div>
+        </form>
         {action === "Log In" ? (
-          <div></div>
+          <div className="forgot-password">
+            Need to sign up?{" "}
+            <span onClick={() => setAction("Sign Up")}>Click Here!</span>
+          </div>
         ) : (
           <div className="forgot-password">
-            Forgot password? <span>Click Here!</span>
+            Already have an account?{" "}
+            <span onClick={() => setAction("Log In")}>Click Here!</span>
           </div>
         )}
         <div className="submit-container">

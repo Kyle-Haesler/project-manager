@@ -53,6 +53,7 @@ body {
     border-radius: 6px;
 }
 
+
 .input img {
     margin: 0px 30px;
 }
@@ -102,4 +103,9 @@ body {
 .gray {
     background: #eaeaea;
     color: #676767
+}
+
+.black {
+    background: black;
+    color: white;
 }
