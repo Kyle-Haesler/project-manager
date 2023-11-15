@@ -6,6 +6,16 @@ import password_icon from "../assets/password.png";
 
 function LoginSignUp() {
   const [action, setAction] = useState("Sign Up");
+  const initialFormState = {
+    name: "",
+    user_name: "",
+    password: "",
+  };
+  const [formData, setFormData] = useState({ ...initialFormState });
+  function handleChange({ target }) {
+    setFormData({ ...formData, [target.name]: target.value });
+    console.log(formData);
+  }
 
   return (
     <body>
@@ -20,16 +30,37 @@ function LoginSignUp() {
           ) : (
             <div className="input">
               <img src={user_icon} />
-              <input type="text" placeholder="Name" />
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                placeholder="Name"
+              />
             </div>
           )}
           <div className="input">
             <img src={email_icon} />
-            <input type="email" placeholder="Email Id" />
+            <input
+              type="email"
+              name="user_name"
+              id="user_name"
+              value={formData.user_name}
+              onChange={handleChange}
+              placeholder="Email Id"
+            />
           </div>
           <div className="input">
             <img src={password_icon} />
-            <input type="password" placeholder="Password" />
+            <input
+              type="password"
+              name="password"
+              id="password"
+              value={formData.password}
+              onChange={handleChange}
+              placeholder="Password"
+            />
           </div>
         </div>
         {action === "Log In" ? (
