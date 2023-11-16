@@ -1,33 +1,46 @@
-const knex = require("../db/connection")
+const knex = require("../db/connection");
 
-
-function list(){
-    return knex("projects").select("*").returning("*")
-}
-
-function read(project_id){
-    return knex("projects").select("*").where("project_id", project_id).returning("*").then((projects) => projects[0])
+function list() {
+  return knex("projects").select("*").returning("*");
 }
 
-function create(project){
-    return knex("projects").insert(project).returning("*").then((createdProject) => createdProject[0])
-}
-function updateStatus(project_id, data){
-    return knex("projects").select("*").where("project_id", project_id).update(data, "*").then((updatedProject) => updatedProject[0])
-}
-function update(project_id, project){
-    return knex("projects").select("*").where("project_id", project_id).update(project, "*").then((updatedProject) => updatedProject[0])
-}
-function destroy(project_id){
-    return knex("projects").where("project_id", project_id).del()
+function read(project_id) {
+  return knex("projects")
+    .select("*")
+    .where("project_id", project_id)
+    .returning("*")
+    .then((projects) => projects[0]);
 }
 
+function create(project) {
+  return knex("projects")
+    .insert(project)
+    .returning("*")
+    .then((createdProject) => createdProject[0]);
+}
+function updateStatus(project_id, data) {
+  return knex("projects")
+    .select("*")
+    .where("project_id", project_id)
+    .update(data, "*")
+    .then((updatedProject) => updatedProject[0]);
+}
+function update(project_id, project) {
+  return knex("projects")
+    .select("*")
+    .where("project_id", project_id)
+    .update(project, "*")
+    .then((updatedProject) => updatedProject[0]);
+}
+function destroy(project_id) {
+  return knex("projects").where("project_id", project_id).del();
+}
 
 module.exports = {
-    create,
-    list,
-    read,
-    update,
-    updateStatus,
-    delete: destroy
-}
+  create,
+  list,
+  read,
+  update,
+  updateStatus,
+  delete: destroy,
+};

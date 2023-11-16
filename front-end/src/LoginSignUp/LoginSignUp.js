@@ -3,23 +3,50 @@ import "./LoginSignUp.css";
 import user_icon from "../assets/person.png";
 import email_icon from "../assets/email.png";
 import password_icon from "../assets/password.png";
+import { createUser, getUser } from "../utils/api";
+import { useHistory } from "react-router-dom";
+import ErrorAlert from "../layout/ErrorAlert";
 
 function LoginSignUp() {
   const [action, setAction] = useState("Sign Up");
+  const [user, setUser] = useState("");
+  const [signInError, setSignInError] = useState("");
+
   const initialFormState = {
     name: "",
     user_name: "",
     password: "",
   };
   const [formData, setFormData] = useState({ ...initialFormState });
+  const history = useHistory();
   function handleChange({ target }) {
     setFormData({ ...formData, [target.name]: target.value });
   }
   async function handleSubmit(event) {
     event.preventDefault();
-    // need to build out backend here for new users table!
-    console.log(formData);
-    setFormData({ ...initialFormState });
+    if (action === "Sign Up") {
+      const abortController = new AbortController();
+      try {
+        const data = await createUser(formData, abortController.signal);
+        setFormData({ ...initialFormState });
+        console.log(data);
+        history.push(`/loginsignup/${data.user_name}`);
+      } catch (error) {
+        console.error(error);
+      }
+      return () => abortController.abort();
+    } else {
+      const abortController = new AbortController();
+      try {
+        const data = await getUser(formData.user_name, abortController.signal);
+
+        setFormData({ ...initialFormState });
+        history.push(`/loginsignup/${data.user_name}`);
+      } catch (error) {
+        setSignInError(error);
+      }
+      return () => abortController.abort();
+    }
   }
 
   return (
@@ -76,6 +103,7 @@ function LoginSignUp() {
                 Submit
               </button>
             </div>
+            <ErrorAlert error={signInError} />
           </div>
         </form>
         {action === "Log In" ? (

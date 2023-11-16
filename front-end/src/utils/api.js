@@ -61,11 +61,11 @@ async function fetchJson(url, options, onCancel) {
 // returns all of the projects from the database
 export async function listProjects(signal) {
   const url = new URL(`${API_BASE_URL}/projects`);
-  return await fetchJson(url, { headers, signal }, [])
+  return await fetchJson(url, { headers, signal }, []);
 }
 
 // POST /projects
-export async function createProject(newProject, signal){
+export async function createProject(newProject, signal) {
   const url = new URL(`${API_BASE_URL}/projects`);
   const method = "POST";
   const headers = {
@@ -76,32 +76,32 @@ export async function createProject(newProject, signal){
   return await fetchJson(url, { method, headers, body, signal }, []);
 }
 // GET /projects/:project_id
-export async function getProject(project_id, signal, ) {
+export async function getProject(project_id, signal) {
   const url = new URL(`${API_BASE_URL}/projects/${project_id}`);
-  return await fetchJson(url, { headers, signal }, [])
+  return await fetchJson(url, { headers, signal }, []);
 }
 // PUT /projects/:project_id
-export async function updateProjectStatus(status, project_id, signal){
+export async function updateProjectStatus(status, project_id, signal) {
   const url = new URL(`${API_BASE_URL}/projects/${project_id}`);
   const method = "PUT";
   const headers = {
     Accept: "application/json",
     "Content-Type": "application/json",
   };
-  const body = JSON.stringify({ data: {status} });
-  
+  const body = JSON.stringify({ data: { status } });
+
   return await fetchJson(url, { method, headers, body, signal }, []);
 }
 
 // DELETE /projects/:project_id
-export async function deleteProject(project_id, signal){
+export async function deleteProject(project_id, signal) {
   const url = new URL(`${API_BASE_URL}/projects/${project_id}`);
-  const method = "DELETE"; 
+  const method = "DELETE";
   return await fetchJson(url, { method, headers, signal }, []);
 }
 
 // PUT /projects/:project_id/edit
-export async function updateProject(project, project_id, signal){
+export async function updateProject(project, project_id, signal) {
   const url = new URL(`${API_BASE_URL}/projects/${project_id}/edit`);
   const method = "PUT";
   const headers = {
@@ -109,7 +109,25 @@ export async function updateProject(project, project_id, signal){
     "Content-Type": "application/json",
   };
   const body = JSON.stringify({ data: project });
-  
+
+  return await fetchJson(url, { method, headers, body, signal }, []);
+}
+// USERS
+
+// POST /users
+export async function createUser(newUser, signal) {
+  const url = new URL(`${API_BASE_URL}/users`);
+  const method = "POST";
+  const headers = {
+    Accept: "application/json",
+    "Content-Type": "application/json",
+  };
+  const body = JSON.stringify({ data: newUser });
   return await fetchJson(url, { method, headers, body, signal }, []);
 }
 
+// GET /users/:user_name
+export async function getUser(user_name, signal) {
+  const url = new URL(`${API_BASE_URL}/users/${user_name}`);
+  return await fetchJson(url, { headers, signal }, []);
+}
