@@ -19,10 +19,10 @@ function Routes() {
         <LoginSignUp />
       </Route>
       <Route path="/new">
-        <NewProject />
+        {user ? <NewProject /> : <Redirect to="/loginsignup" />}
       </Route>
       <Route path="/:project_id">
-        <EditProject />
+        {user ? <EditProject /> : <Redirect to="/loginsignup" />}
       </Route>
       <Route>
         <NotFound />
