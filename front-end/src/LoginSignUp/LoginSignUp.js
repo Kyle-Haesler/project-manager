@@ -6,10 +6,11 @@ import password_icon from "../assets/password.png";
 import { createUser, getUser } from "../utils/api";
 import { useHistory } from "react-router-dom";
 import ErrorAlert from "../layout/ErrorAlert";
+import { useUser } from "../userContext/userContext";
 
 function LoginSignUp() {
   const [action, setAction] = useState("Sign Up");
-  const [user, setUser] = useState("");
+  const { login } = useUser();
   const [signInError, setSignInError] = useState("");
 
   const initialFormState = {
@@ -29,8 +30,8 @@ function LoginSignUp() {
       try {
         const data = await createUser(formData, abortController.signal);
         setFormData({ ...initialFormState });
-        console.log(data);
-        history.push(`/loginsignup/${data.user_name}`);
+        login(data.user_name);
+        history.push("/");
       } catch (error) {
         console.error(error);
       }
@@ -41,7 +42,8 @@ function LoginSignUp() {
         const data = await getUser(formData.user_name, abortController.signal);
 
         setFormData({ ...initialFormState });
-        history.push(`/loginsignup/${data.user_name}`);
+        login(data.user_name);
+        history.push("/");
       } catch (error) {
         setSignInError(error);
       }
