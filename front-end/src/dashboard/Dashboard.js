@@ -13,7 +13,7 @@ import { useUser } from "../userContext/userContext";
 function Dashboard() {
   const [projects, setProjects] = useState([]);
   const [projectsError, setProjectsError] = useState(null);
-  const { user } = useUser();
+  const { user, logout } = useUser();
   const history = useHistory();
 
   useEffect(loadDashboard, []);
@@ -38,6 +38,10 @@ function Dashboard() {
         style={{ background: "black", color: "white", textAlign: "center" }}
       >
         <h1 className="display-4">Project Manager</h1>
+        <h4>Logged in as: {user}</h4>
+        <button type="button" onClick={() => logout()}>
+          Logout
+        </button>
       </header>
       <main>
         <button
