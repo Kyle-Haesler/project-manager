@@ -1,0 +1,36 @@
+.form-inputs {
+    margin-top: 55px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.form-input {
+    display: flex;
+    flex-direction: row;
+}
+.input-title {
+    width: 140px;
+    background-color: black;
+    color: white;
+    font-weight: 400;
+    margin: 0 20px;
+    display: flex;
+    align-items: center;
+    height: 50px;
+    padding-left: 20px;
+    
+    
+}
+
+.input-body{
+    width: 380px;
+    background-color: #eaeaea;
+    border: none;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    color: #797979;
+
+}

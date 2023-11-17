@@ -14,7 +14,7 @@ function NewProject() {
     notes: "",
     user_name: user,
   };
-  const pageTitle = "Create New Project";
+  const pageTitle = "New Project";
   const history = useHistory();
   const [formData, setFormData] = useState({ ...initialFormState });
   const [projectsError, setProjectsError] = useState(null);
