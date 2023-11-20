@@ -1,6 +1,6 @@
 exports.up = function (knex) {
   return knex.schema.table("projects", function (table) {
-    table.string("tag").default("red");
+    table.string("tag").default("Red");
   });
 };
 

@@ -16,6 +16,15 @@ function ProjectForm({
     "Complete",
     "Archive",
   ];
+  const availableColors = [
+    "Red",
+    "Orange",
+    "Yellow",
+    "Green",
+    "Blue",
+    "Indigo",
+    "Violet",
+  ];
 
   return (
     <div className="box">
@@ -55,7 +64,7 @@ function ProjectForm({
             </label>
           </div>
           <div className="form-input">
-            <div className="input-title">Select:</div>
+            <div className="input-title">Select Status:</div>
             <label htmlFor="status">
               <select
                 id="status"
@@ -68,6 +77,24 @@ function ProjectForm({
                 <option value="">Select a Status...</option>
                 {availableStatuses.map((status) => (
                   <option value={status}>{status}</option>
+                ))}
+              </select>
+            </label>
+          </div>
+          <div className="form-input">
+            <div className="input-title">Select Tag:</div>
+            <label htmlFor="tag">
+              <select
+                id="tag"
+                name="tag"
+                className="input-body"
+                value={formData.tag}
+                onChange={handleChange}
+                required
+              >
+                <option value="">Select Tag Color...</option>
+                {availableColors.map((tag) => (
+                  <option value={tag}>{tag}</option>
                 ))}
               </select>
             </label>

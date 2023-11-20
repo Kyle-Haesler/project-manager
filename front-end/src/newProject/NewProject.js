@@ -13,6 +13,7 @@ function NewProject() {
     status: "",
     notes: "",
     user_name: user,
+    tag: "red",
   };
   const pageTitle = "New Project";
   const history = useHistory();
