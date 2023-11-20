@@ -61,6 +61,29 @@ function signUpUserNameValid(req, res, next) {
   }
   next();
 }
+// vSignUp - user_name is open and available
+async function signUpUserNameAvailable(req, res, next) {
+  const { user_name } = req.body.data;
+  const data = await usersService.read(user_name);
+  if (data) {
+    return next({
+      status: 400,
+      message: `User Name: ${user_name} is already in use. Please log in, or sign up with a different account`,
+    });
+  }
+  next();
+}
+// vSignUp - password is atleast 7 characters
+function signUpPasswordLengthAcceptable(req, res, next) {
+  const { password } = req.body.data;
+  if (password.length < 7) {
+    return next({
+      status: 400,
+      message: "Your password must be atleast 7 characters in length",
+    });
+  }
+  next();
+}
 
 async function read(req, res, next) {
   const { user_name } = req.params;
@@ -79,6 +102,8 @@ module.exports = {
     allFieldsValid,
     signUpNameLengthAcceptable,
     signUpUserNameValid,
+    signUpUserNameAvailable,
+    signUpPasswordLengthAcceptable,
     create,
   ],
   read,

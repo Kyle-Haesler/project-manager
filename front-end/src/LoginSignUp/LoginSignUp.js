@@ -12,6 +12,7 @@ function LoginSignUp() {
   const [action, setAction] = useState("Sign Up");
   const { login } = useUser();
   const [signInError, setSignInError] = useState("");
+  const [signUpError, setSignUpError] = useState("");
 
   const initialFormState = {
     name: "",
@@ -27,13 +28,15 @@ function LoginSignUp() {
     event.preventDefault();
     if (action === "Sign Up") {
       const abortController = new AbortController();
+      setSignUpError("");
       try {
         const data = await createUser(formData, abortController.signal);
         setFormData({ ...initialFormState });
         login(data.user_name);
         history.push("/");
       } catch (error) {
-        console.error(error);
+        setSignUpError(error);
+        console.log(signUpError);
       }
       return () => abortController.abort();
     } else {
@@ -105,6 +108,7 @@ function LoginSignUp() {
                 Submit
               </button>
             </div>
+            <ErrorAlert error={signUpError} />
             <ErrorAlert error={signInError} />
           </div>
         </form>
