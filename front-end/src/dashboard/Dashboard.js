@@ -36,11 +36,10 @@ function Dashboard() {
     history.push("/new");
   }
   function toggleChangeCategoryView(category) {
-    console.log(categoryView);
     if (categoryView[category] === "view") {
       setCategoryView({ ...categoryView, [category]: "hide" });
     } else {
-      setCategoryView({ ...categoryView, [categoryView.category]: "view" });
+      setCategoryView({ ...categoryView, [category]: "view" });
     }
   }
 
@@ -61,23 +60,95 @@ function Dashboard() {
         </div>
       </div>
       <main>
-        <button
-          type="button"
-          className="createButton"
-          onClick={createProject}
-          style={{ marginBottom: "20px" }}
-        >
-          + Create Project
-        </button>
+        <div className="button-container">
+          <button
+            type="button"
+            className="createButton"
+            onClick={createProject}
+            style={{ marginBottom: "20px" }}
+          >
+            + Create Project
+          </button>
+          <button
+            type="button"
+            className={
+              categoryView.discovery === "view"
+                ? "toggle-button toggled"
+                : "toggle-button"
+            }
+            onClick={() => toggleChangeCategoryView("discovery")}
+          >
+            {categoryView.discovery === "view" ? "- Discovery" : "+ Discovery"}
+          </button>
+          <button
+            type="button"
+            className={
+              categoryView.waiting === "view"
+                ? "toggle-button toggled"
+                : "toggle-button"
+            }
+            onClick={() => toggleChangeCategoryView("waiting")}
+          >
+            {categoryView.waiting === "view" ? "- Waiting" : "+ Waiting"}
+          </button>
+          <button
+            type="button"
+            className={
+              categoryView.inProgress === "view"
+                ? "toggle-button toggled"
+                : "toggle-button"
+            }
+            onClick={() => toggleChangeCategoryView("inProgress")}
+          >
+            {categoryView.inProgress === "view"
+              ? "- In-Progress"
+              : "+ In-Progress"}
+          </button>
+          <button
+            type="button"
+            className={
+              categoryView.sent === "view"
+                ? "toggle-button toggled"
+                : "toggle-button"
+            }
+            onClick={() => toggleChangeCategoryView("sent")}
+          >
+            {categoryView.sent === "view" ? "- Sent" : "+ Sent"}
+          </button>
+          <button
+            type="button"
+            className={
+              categoryView.complete === "view"
+                ? "toggle-button toggled"
+                : "toggle-button"
+            }
+            onClick={() => toggleChangeCategoryView("complete")}
+          >
+            {categoryView.complete === "view" ? "- Complete" : "+ Complete"}
+          </button>
+          <button
+            type="button"
+            className={
+              categoryView.archive === "view"
+                ? "toggle-button toggled"
+                : "toggle-button"
+            }
+            onClick={() => toggleChangeCategoryView("archive")}
+          >
+            {categoryView.archive === "view" ? "- Archive" : "+ Archive"}
+          </button>
+          <button
+            type="button"
+            className="toggle-button reset"
+            onClick={() => setCategoryView({ ...initialCategoryView })}
+          >
+            Reset Filters
+          </button>
+        </div>
         <div className="mainContent">
           {categoryView.discovery === "view" ? (
             <div className="column">
-              <h2
-                className="column-title"
-                onClick={() => toggleChangeCategoryView("discovery")}
-              >
-                Discovery
-              </h2>
+              <h2 className="column-title">Discovery</h2>
               <div className="column-title-underline"></div>
               {projects.map((project) => {
                 if (
@@ -93,12 +164,7 @@ function Dashboard() {
           )}
           {categoryView.waiting === "view" ? (
             <div className="column">
-              <h2
-                className="column-title"
-                onClick={() => toggleChangeCategoryView("waiting")}
-              >
-                Waiting
-              </h2>
+              <h2 className="column-title">Waiting</h2>
               <div className="column-title-underline"></div>
               {projects.map((project) => {
                 if (
@@ -114,12 +180,7 @@ function Dashboard() {
           )}
           {categoryView.inProgress === "view" ? (
             <div className="column">
-              <h2
-                className="column-title"
-                onClick={() => toggleChangeCategoryView("inProgress")}
-              >
-                In-Progress
-              </h2>
+              <h2 className="column-title">In-Progress</h2>
               <div className="column-title-underline"></div>
               {projects.map((project) => {
                 if (
@@ -135,12 +196,7 @@ function Dashboard() {
           )}
           {categoryView.sent === "view" ? (
             <div className="column">
-              <h2
-                className="column-title"
-                onClick={() => toggleChangeCategoryView("sent")}
-              >
-                Sent
-              </h2>
+              <h2 className="column-title">Sent</h2>
               <div className="column-title-underline"></div>
               {projects.map((project) => {
                 if (project.status === "Sent" && project.user_name === user) {
@@ -153,12 +209,7 @@ function Dashboard() {
           )}
           {categoryView.complete === "view" ? (
             <div className="column">
-              <h2
-                className="column-title"
-                onClick={() => toggleChangeCategoryView("complete")}
-              >
-                Complete
-              </h2>
+              <h2 className="column-title">Complete</h2>
               <div className="column-title-underline"></div>
               {projects.map((project) => {
                 if (
@@ -174,12 +225,7 @@ function Dashboard() {
           )}
           {categoryView.archive === "view" ? (
             <div className="column">
-              <h2
-                className="column-title"
-                onClick={() => toggleChangeCategoryView("archive")}
-              >
-                Archive
-              </h2>
+              <h2 className="column-title">Archive</h2>
               <div className="column-title-underline"></div>
               {projects.map((project) => {
                 if (
