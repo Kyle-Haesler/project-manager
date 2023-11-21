@@ -84,11 +84,29 @@ function signUpPasswordLengthAcceptable(req, res, next) {
   }
   next();
 }
+// vUserLogin - make sure both the user_name and password are correct
+async function validateUserLogin(req, res, next) {
+  const { user_name, password } = req.params;
+  const data = await usersService.login(user_name, password);
+  if (!data) {
+    return next({
+      status: 400,
+      message:
+        "Username or password is invalid. Please try again or sign up if you don't have an account",
+    });
+  }
+  res.locals.user = data;
+  next();
+}
 
 async function read(req, res, next) {
   const { user_name } = req.params;
 
   const data = await usersService.read(user_name);
+  res.json({ data });
+}
+async function login(req, res, next) {
+  const data = res.locals.user;
   res.json({ data });
 }
 
@@ -107,4 +125,5 @@ module.exports = {
     create,
   ],
   read,
+  login: [validateUserLogin, login],
 };

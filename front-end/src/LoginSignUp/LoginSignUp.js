@@ -3,7 +3,7 @@ import "./LoginSignUp.css";
 import user_icon from "../assets/person.png";
 import email_icon from "../assets/email.png";
 import password_icon from "../assets/password.png";
-import { createUser, getUser } from "../utils/api";
+import { createUser, loginUser } from "../utils/api";
 import { useHistory } from "react-router-dom";
 import ErrorAlert from "../layout/ErrorAlert";
 import { useUser } from "../userContext/userContext";
@@ -42,7 +42,11 @@ function LoginSignUp() {
     } else {
       const abortController = new AbortController();
       try {
-        const data = await getUser(formData.user_name, abortController.signal);
+        const data = await loginUser(
+          formData.user_name,
+          formData.password,
+          abortController.signal
+        );
 
         setFormData({ ...initialFormState });
         login(data.user_name);

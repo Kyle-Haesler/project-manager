@@ -14,8 +14,17 @@ function create(user) {
     .returning("*")
     .then((createdUsers) => createdUsers[0]);
 }
+function login(user_name, password) {
+  return knex("users")
+    .select("*")
+    .where("user_name", user_name)
+    .where("password", password)
+    .returning("*")
+    .then((users) => users[0]);
+}
 
 module.exports = {
   read,
   create,
+  login,
 };

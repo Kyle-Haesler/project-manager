@@ -131,3 +131,9 @@ export async function getUser(user_name, signal) {
   const url = new URL(`${API_BASE_URL}/users/${user_name}`);
   return await fetchJson(url, { headers, signal }, []);
 }
+
+// GET /users/:user_name/password
+export async function loginUser(user_name, password, signal) {
+  const url = new URL(`${API_BASE_URL}/users/${user_name}/${password}`);
+  return await fetchJson(url, { headers, signal }, []);
+}
