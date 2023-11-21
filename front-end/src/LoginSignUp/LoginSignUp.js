@@ -57,6 +57,21 @@ function LoginSignUp() {
       return () => abortController.abort();
     }
   }
+  // Handling of state toggling between sign up and login
+  // handle switch from log in to sign up
+  function handleLoginToSignUpToggle() {
+    setSignInError("");
+    setSignUpError("");
+    setFormData({ ...initialFormState });
+    setAction("Sign Up");
+  }
+  // handle switch from sign up to log in
+  function handleSignUpToLoginToggle() {
+    setSignInError("");
+    setSignUpError("");
+    setFormData({ ...initialFormState });
+    setAction("Log In");
+  }
 
   return (
     <body>
@@ -107,36 +122,43 @@ function LoginSignUp() {
                 required
               />
             </div>
+            {signInError || signUpError ? (
+              <div className="input error-box">
+                <ErrorAlert error={signUpError} />
+                <ErrorAlert error={signInError} />
+              </div>
+            ) : (
+              <div></div>
+            )}
+
             <div className="submit-container">
               <button type="submit" className="submit black">
                 Submit
               </button>
             </div>
-            <ErrorAlert error={signUpError} />
-            <ErrorAlert error={signInError} />
           </div>
         </form>
         {action === "Log In" ? (
           <div className="forgot-password">
             Need to sign up?{" "}
-            <span onClick={() => setAction("Sign Up")}>Click Here!</span>
+            <span onClick={handleLoginToSignUpToggle}>Click Here!</span>
           </div>
         ) : (
           <div className="forgot-password">
             Already have an account?{" "}
-            <span onClick={() => setAction("Log In")}>Click Here!</span>
+            <span onClick={handleSignUpToLoginToggle}>Click Here!</span>
           </div>
         )}
         <div className="submit-container">
           <div
             className={action === "Log In" ? "submit gray" : "submit"}
-            onClick={() => setAction("Sign Up")}
+            onClick={handleLoginToSignUpToggle}
           >
             Sign Up
           </div>
           <div
             className={action === "Sign Up" ? "submit gray" : "submit"}
-            onClick={() => setAction("Log In")}
+            onClick={handleSignUpToLoginToggle}
           >
             Login
           </div>
