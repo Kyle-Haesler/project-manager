@@ -1,5 +1,6 @@
 import React from "react";
 import "./ProjectForm.css";
+import ErrorAlert from "../layout/ErrorAlert";
 
 function ProjectForm({
   pageTitle,
@@ -7,6 +8,7 @@ function ProjectForm({
   formData,
   handleChange,
   handleCancel,
+  newProjectError,
 }) {
   const availableStatuses = [
     "Discovery",
@@ -113,6 +115,7 @@ function ProjectForm({
               />
             </label>
           </div>
+          <ErrorAlert error={newProjectError} />
           <div className="submit-container">
             <button type="submit" className="submit">
               Submit

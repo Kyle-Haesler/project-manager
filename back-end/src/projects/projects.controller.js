@@ -20,15 +20,15 @@ function createProjectFieldsPresent(req, res, next) {
   if (
     !data ||
     Object.keys(data).length === 0 ||
-    Object.keys(data).length !== 5
+    Object.keys(data).length !== 6
   ) {
     return next({
       message:
-        "Data object empty or does not include required fields of project_name, client, status, notes and tag",
+        "Data object empty or does not include required fields of project_name, user_name, client, status, notes and tag",
       status: 400,
     });
   }
-  const { project_name, client, status, notes, tag } = data;
+  const { project_name, client, status, user_name, notes, tag } = data;
   if (!project_name) {
     return next({
       message: "Project_name field is missing or blank.",
@@ -54,6 +54,12 @@ function createProjectFieldsPresent(req, res, next) {
     });
   }
   if (!tag) {
+    return next({
+      message: "tag field is missing or blank.",
+      status: 400,
+    });
+  }
+  if (!user_name) {
     return next({
       message: "tag field is missing or blank.",
       status: 400,

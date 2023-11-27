@@ -18,7 +18,7 @@ function NewProject() {
   const pageTitle = "New Project";
   const history = useHistory();
   const [formData, setFormData] = useState({ ...initialFormState });
-  const [projectsError, setProjectsError] = useState(null);
+  const [newProjectError, setNewProjectError] = useState("");
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -29,7 +29,7 @@ function NewProject() {
   }
 
   async function handleSubmit(event) {
-    setProjectsError(null);
+    setNewProjectError("");
     event.preventDefault();
     const abortController = new AbortController();
     try {
@@ -37,7 +37,7 @@ function NewProject() {
       history.push("/");
       setFormData({ ...initialFormState });
     } catch (error) {
-      setProjectsError(error);
+      setNewProjectError(error);
     }
     return () => abortController.abort();
   }
@@ -50,6 +50,7 @@ function NewProject() {
         formData={formData}
         handleChange={handleChange}
         handleSubmit={handleSubmit}
+        newProjectError={newProjectError}
       />
     </>
   );

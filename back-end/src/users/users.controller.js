@@ -13,7 +13,7 @@ function allFieldsValid(req, res, next) {
     return next({
       status: 400,
       message:
-        "Data object empty or includes more than required fields. These fields are 'user', 'user_name', and 'password'",
+        "Data object empty or does not include required fields. These fields are 'user', 'user_name', and 'password'",
     });
   }
   const { name, user_name, password } = data;
