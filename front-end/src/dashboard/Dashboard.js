@@ -19,7 +19,17 @@ function Dashboard() {
     complete: "view",
     archive: "view",
   };
+
   const [categoryView, setCategoryView] = useState({ ...initialCategoryView });
+  // Search button
+  const [searchForm, setSearchForm] = useState("");
+  function handleSearchChange({ target }) {
+    setSearchForm(target.value);
+  }
+  async function handleSearchSubmit(event) {
+    event.preventDefault();
+    console.log(searchForm);
+  }
 
   useEffect(loadDashboard, []);
 
@@ -144,6 +154,16 @@ function Dashboard() {
           >
             Reset Filters
           </button>
+          <form onSubmit={handleSearchSubmit}>
+            <input
+              name="search"
+              id="search"
+              type="text"
+              value={searchForm}
+              onChange={handleSearchChange}
+            ></input>
+            <button type="submit">Search</button>
+          </form>
         </div>
         <div className="mainContent">
           {categoryView.discovery === "view" ? (
