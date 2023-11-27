@@ -169,9 +169,16 @@ function Dashboard() {
               type="text"
               value={searchForm}
               onChange={handleSearchChange}
+              required
             ></input>
-            <button type="submit">Search</button>
-            <button type="button" onClick={() => window.location.reload()}>
+            <button type="submit" className="search-button">
+              Search
+            </button>
+            <button
+              type="button"
+              className="search-button clear"
+              onClick={() => window.location.reload()}
+            >
               Clear
             </button>
           </form>
