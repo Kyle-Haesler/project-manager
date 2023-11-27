@@ -46,6 +46,14 @@ function search(searchData) {
     )
     .returning("*");
 }
+// user_name exists in the users table for create new project
+function readUser(user_name) {
+  return knex("users")
+    .select("*")
+    .where("user_name", user_name)
+    .returning("*")
+    .then((users) => users[0]);
+}
 
 module.exports = {
   create,
@@ -55,4 +63,5 @@ module.exports = {
   updateStatus,
   delete: destroy,
   search,
+  readUser,
 };

@@ -68,6 +68,18 @@ function createProjectFieldsPresent(req, res, next) {
 
   next();
 }
+// vCreate_Project - user_name validation, make sure the user_name actually exists
+async function userNameExists(req, res, next) {
+  const { user_name } = req.body.data;
+  const data = await projectsService.readUser(user_name);
+  if (!data) {
+    return next({
+      message: `${user_name} is not valid.`,
+      status: 400,
+    });
+  }
+  next();
+}
 // vCreate_Project - status validation, make sure status is one of the acceptable values
 const availableStatuses = [
   "Discovery",
@@ -145,6 +157,7 @@ async function search(req, res, next) {
 module.exports = {
   create: [
     createProjectFieldsPresent,
+    userNameExists,
     statusPropertyValid,
     tagPropertyValid,
     create,
