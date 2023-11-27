@@ -35,6 +35,16 @@ function update(project_id, project) {
 function destroy(project_id) {
   return knex("projects").where("project_id", project_id).del();
 }
+function search(searchData) {
+  const searchTerm = `%${searchData}%`;
+  return knex("projects")
+    .select("*")
+    .whereRaw(
+      "LOWER(project_name) like LOWER(?) OR LOWER(client) like LOWER(?) OR LOWER(notes) like LOWER(?) OR LOWER(tag) like LOWER(?) OR LOWER(status) like LOWER(?)",
+      [searchTerm, searchTerm, searchTerm, searchTerm, searchTerm]
+    )
+    .returning("*");
+}
 
 module.exports = {
   create,
@@ -43,4 +53,5 @@ module.exports = {
   update,
   updateStatus,
   delete: destroy,
+  search,
 };

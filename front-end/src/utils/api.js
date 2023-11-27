@@ -75,6 +75,12 @@ export async function createProject(newProject, signal) {
   const body = JSON.stringify({ data: newProject });
   return await fetchJson(url, { method, headers, body, signal }, []);
 }
+// GET /projects/search/:searchData
+export async function searchProjects(searchData, signal) {
+  const url = new URL(`${API_BASE_URL}/projects/search/${searchData}`);
+  return await fetchJson(url, { headers, signal }, []);
+}
+
 // GET /projects/:project_id
 export async function getProject(project_id, signal) {
   const url = new URL(`${API_BASE_URL}/projects/${project_id}`);
@@ -112,6 +118,7 @@ export async function updateProject(project, project_id, signal) {
 
   return await fetchJson(url, { method, headers, body, signal }, []);
 }
+
 // USERS
 
 // POST /users

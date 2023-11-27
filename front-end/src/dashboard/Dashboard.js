@@ -21,16 +21,17 @@ function Dashboard() {
   };
 
   const [categoryView, setCategoryView] = useState({ ...initialCategoryView });
-  // Search button
+  // Search Form
   const [searchForm, setSearchForm] = useState("");
   function handleSearchChange({ target }) {
     setSearchForm(target.value);
   }
   async function handleSearchSubmit(event) {
     event.preventDefault();
+    // need to implement search here, set projects to the result, clear the search form
     console.log(searchForm);
   }
-
+  // Initial page load
   useEffect(loadDashboard, []);
 
   function loadDashboard() {
