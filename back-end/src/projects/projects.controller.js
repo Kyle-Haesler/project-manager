@@ -68,6 +68,34 @@ function createProjectFieldsPresent(req, res, next) {
 
   next();
 }
+// vCreate_Project - status validation, make sure status is one of the acceptable values
+const availableStatuses = [
+  "Discovery",
+  "Waiting",
+  "In-Progress",
+  "Sent",
+  "Complete",
+  "Archive",
+];
+const availableColors = [
+  "Red",
+  "Orange",
+  "Yellow",
+  "Green",
+  "Blue",
+  "Indigo",
+  "Violet",
+];
+function statusPropertyValid(req, res, next) {
+  const { status } = req.body.data;
+  if (!availableStatuses.includes(status)) {
+    return next({
+      message: `${status} is not a valid status.`,
+      status: 400,
+    });
+  }
+  return next();
+}
 async function create(req, res) {
   const data = await projectsService.create(req.body.data);
   res.status(201).json({ data });
@@ -104,7 +132,7 @@ async function search(req, res, next) {
 }
 
 module.exports = {
-  create: [createProjectFieldsPresent, create],
+  create: [createProjectFieldsPresent, statusPropertyValid, create],
   list,
   read: [projectIdExists, read],
   updateStatus,

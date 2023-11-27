@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { createProject } from "../utils/api";
-import ErrorAlert from "../layout/ErrorAlert";
 import ProjectForm from "../helper components/ProjectForm";
 import { useUser } from "../userContext/userContext";
 
