@@ -77,15 +77,6 @@ const availableStatuses = [
   "Complete",
   "Archive",
 ];
-const availableColors = [
-  "Red",
-  "Orange",
-  "Yellow",
-  "Green",
-  "Blue",
-  "Indigo",
-  "Violet",
-];
 function statusPropertyValid(req, res, next) {
   const { status } = req.body.data;
   if (!availableStatuses.includes(status)) {
@@ -95,6 +86,26 @@ function statusPropertyValid(req, res, next) {
     });
   }
   return next();
+}
+// vCreate_Project - tag validation, make sure the tag is one of the acceptable values
+const availableColors = [
+  "Red",
+  "Orange",
+  "Yellow",
+  "Green",
+  "Blue",
+  "Indigo",
+  "Violet",
+];
+function tagPropertyValid(req, res, next) {
+  const { tag } = req.body.data;
+  if (!availableColors.includes(tag)) {
+    return next({
+      message: `${tag} is not a valid tag.`,
+      status: 400,
+    });
+  }
+  next();
 }
 async function create(req, res) {
   const data = await projectsService.create(req.body.data);
@@ -132,7 +143,12 @@ async function search(req, res, next) {
 }
 
 module.exports = {
-  create: [createProjectFieldsPresent, statusPropertyValid, create],
+  create: [
+    createProjectFieldsPresent,
+    statusPropertyValid,
+    tagPropertyValid,
+    create,
+  ],
   list,
   read: [projectIdExists, read],
   updateStatus,
