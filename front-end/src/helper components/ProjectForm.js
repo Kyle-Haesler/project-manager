@@ -112,6 +112,7 @@ function ProjectForm({
                 value={formData.notes}
                 onChange={handleChange}
                 rows="4"
+                required
               />
             </label>
           </div>
