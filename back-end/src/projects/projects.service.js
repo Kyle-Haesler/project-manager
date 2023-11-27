@@ -35,6 +35,7 @@ function update(project_id, project) {
 function destroy(project_id) {
   return knex("projects").where("project_id", project_id).del();
 }
+// case insensitive partial match for project_name, client, notes, status or tag
 function search(searchData) {
   const searchTerm = `%${searchData}%`;
   return knex("projects")

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { listProjects } from "../utils/api";
+import { listProjects, searchProjects } from "../utils/api";
 import ErrorAlert from "../layout/ErrorAlert";
 import { useHistory } from "react-router-dom";
 import ProjectCard from "../projectsCard/ProjectCard";
@@ -28,8 +28,15 @@ function Dashboard() {
   }
   async function handleSearchSubmit(event) {
     event.preventDefault();
-    // need to implement search here, set projects to the result, clear the search form
-    console.log(searchForm);
+    const abortController = new AbortController();
+    try {
+      const data = await searchProjects(searchForm, abortController.signal);
+      setProjects(data);
+      setSearchForm("");
+    } catch (error) {
+      console.error(error);
+    }
+    return () => abortController.abort();
   }
   // Initial page load
   useEffect(loadDashboard, []);
@@ -164,6 +171,9 @@ function Dashboard() {
               onChange={handleSearchChange}
             ></input>
             <button type="submit">Search</button>
+            <button type="button" onClick={() => window.location.reload()}>
+              Clear
+            </button>
           </form>
         </div>
         <div className="mainContent">
