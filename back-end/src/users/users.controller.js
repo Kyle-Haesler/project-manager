@@ -3,7 +3,6 @@ const usersService = require("./users.service");
 // VALIDATION: All validation related functions will be denoted with a "v" followed by a one-word description of where they are used
 
 // vSignUp - General
-const fields = ["name", "user_name", "password"];
 function allFieldsValid(req, res, next) {
   const { data } = req.body;
   if (
@@ -84,6 +83,7 @@ function signUpPasswordLengthAcceptable(req, res, next) {
   }
   next();
 }
+
 // vUserLogin - make sure both the user_name and password are correct
 async function validateUserLogin(req, res, next) {
   const { user_name, password } = req.params;
@@ -98,11 +98,22 @@ async function validateUserLogin(req, res, next) {
   res.locals.user = data;
   next();
 }
-
-async function read(req, res, next) {
+// vRead
+async function userNameExists(req, res, next) {
   const { user_name } = req.params;
-
   const data = await usersService.read(user_name);
+  if (!data) {
+    return next({
+      message: `Username: ${user_name} does not exist`,
+      status: 400,
+    });
+  }
+  res.locals.userInfo = data;
+  next();
+}
+// Traditional Middleware functions
+function read(req, res, next) {
+  const data = res.locals.userInfo;
   res.json({ data });
 }
 async function login(req, res, next) {
@@ -124,6 +135,6 @@ module.exports = {
     signUpPasswordLengthAcceptable,
     create,
   ],
-  read,
+  read: [userNameExists, read],
   login: [validateUserLogin, login],
 };
