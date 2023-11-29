@@ -5,6 +5,7 @@ import ProjectForm from "../helper components/ProjectForm";
 
 function EditProject() {
   const [formData, setFormData] = useState({});
+  const [editProjectError, setEditProjectError] = useState("");
   const { project_id } = useParams();
   const history = useHistory();
 
@@ -30,13 +31,14 @@ function EditProject() {
   }
   async function handleSubmit(event) {
     event.preventDefault();
+    setEditProjectError("");
     const abortController = new AbortController();
     try {
       await updateProject(formData, project_id, abortController.signal);
       history.push("/");
       setFormData({});
     } catch (error) {
-      console.error(error);
+      setEditProjectError(error);
     }
     return () => abortController.abort();
   }
@@ -48,6 +50,7 @@ function EditProject() {
         formData={formData}
         handleChange={handleChange}
         handleSubmit={handleSubmit}
+        newProjectError={editProjectError}
       />
     </>
   );
