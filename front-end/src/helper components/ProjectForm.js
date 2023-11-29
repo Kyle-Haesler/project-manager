@@ -78,7 +78,9 @@ function ProjectForm({
               >
                 <option value="">Select a Status...</option>
                 {availableStatuses.map((status) => (
-                  <option value={status}>{status}</option>
+                  <option key={status} value={status}>
+                    {status}
+                  </option>
                 ))}
               </select>
             </label>
@@ -96,7 +98,9 @@ function ProjectForm({
               >
                 <option value="">Select Tag Color...</option>
                 {availableColors.map((tag) => (
-                  <option value={tag}>{tag}</option>
+                  <option key={tag} value={tag}>
+                    {tag}
+                  </option>
                 ))}
               </select>
             </label>
