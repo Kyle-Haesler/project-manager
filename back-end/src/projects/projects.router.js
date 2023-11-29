@@ -1,9 +1,4 @@
-/**
- * Defines the router for reservation resources.
- *
- * @type {Router}
- */
-
+const notFound = require("../errors/notFound");
 const router = require("express").Router();
 const controller = require("./projects.controller");
 
@@ -15,5 +10,5 @@ router
   .put(controller.updateStatus)
   .delete(controller.delete);
 router.route("/").get(controller.list).post(controller.create);
-
+router.use(notFound);
 module.exports = router;
