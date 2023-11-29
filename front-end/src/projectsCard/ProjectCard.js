@@ -100,7 +100,7 @@ function ProjectCard({ project }) {
         </p>
         <button
           type="button"
-          class="btn btn-outline-primary"
+          className="btn btn-outline-primary"
           onClick={handleMoveBack}
           style={{ marginRight: "10px" }}
         >
@@ -108,7 +108,7 @@ function ProjectCard({ project }) {
         </button>
         <button
           type="button"
-          class="btn btn-outline-secondary"
+          className="btn btn-outline-secondary"
           onClick={handleMoveForward}
           style={{ marginRight: "10px" }}
         >
@@ -116,7 +116,7 @@ function ProjectCard({ project }) {
         </button>
         <button
           type="button"
-          class="btn btn-outline-warning"
+          className="btn btn-outline-warning"
           onClick={handleEdit}
           style={{ marginRight: "10px" }}
         >
@@ -124,7 +124,7 @@ function ProjectCard({ project }) {
         </button>
         <button
           type="button"
-          class="btn btn-outline-danger"
+          className="btn btn-outline-danger"
           onClick={handleDelete}
         >
           Delete
