@@ -1,4 +1,3 @@
-import ErrorAlert from "../layout/ErrorAlert";
 import { useHistory } from "react-router-dom";
 import { updateProjectStatus } from "../utils/api";
 import { deleteProject } from "../utils/api";

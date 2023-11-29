@@ -86,7 +86,7 @@ function LoginSignUp() {
               <div></div>
             ) : (
               <div className="input">
-                <img src={user_icon} />
+                <img src={user_icon} alt="User Icon" />
                 <input
                   type="text"
                   id="name"
@@ -99,7 +99,7 @@ function LoginSignUp() {
               </div>
             )}
             <div className="input">
-              <img src={email_icon} />
+              <img src={email_icon} alt="Email Icon" />
               <input
                 type="email"
                 name="user_name"
@@ -111,7 +111,7 @@ function LoginSignUp() {
               />
             </div>
             <div className="input">
-              <img src={password_icon} />
+              <img src={password_icon} alt="Password Icon" />
               <input
                 type="password"
                 name="password"

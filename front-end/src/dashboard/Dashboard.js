@@ -188,14 +188,14 @@ function Dashboard() {
             <div className="column">
               <h2 className="column-title">Discovery</h2>
               <div className="column-title-underline"></div>
-              {projects.map((project) => {
-                if (
-                  project.status === "Discovery" &&
-                  project.user_name === user
-                ) {
-                  return <ProjectCard project={project} />;
-                }
-              })}
+              {projects
+                .filter(
+                  (project) =>
+                    project.status === "Discovery" && project.user_name === user
+                )
+                .map((project) => (
+                  <ProjectCard key={project.project_id} project={project} />
+                ))}
             </div>
           ) : (
             <div></div>
@@ -204,14 +204,14 @@ function Dashboard() {
             <div className="column">
               <h2 className="column-title">Waiting</h2>
               <div className="column-title-underline"></div>
-              {projects.map((project) => {
-                if (
-                  project.status === "Waiting" &&
-                  project.user_name === user
-                ) {
-                  return <ProjectCard project={project} />;
-                }
-              })}
+              {projects
+                .filter(
+                  (project) =>
+                    project.status === "Waiting" && project.user_name === user
+                )
+                .map((project) => (
+                  <ProjectCard key={project.project_id} project={project} />
+                ))}
             </div>
           ) : (
             <div></div>
@@ -220,14 +220,15 @@ function Dashboard() {
             <div className="column">
               <h2 className="column-title">In-Progress</h2>
               <div className="column-title-underline"></div>
-              {projects.map((project) => {
-                if (
-                  project.status === "In-Progress" &&
-                  project.user_name === user
-                ) {
-                  return <ProjectCard project={project} />;
-                }
-              })}
+              {projects
+                .filter(
+                  (project) =>
+                    project.status === "In-Progress" &&
+                    project.user_name === user
+                )
+                .map((project) => (
+                  <ProjectCard key={project.project_id} project={project} />
+                ))}
             </div>
           ) : (
             <div></div>
@@ -236,11 +237,14 @@ function Dashboard() {
             <div className="column">
               <h2 className="column-title">Sent</h2>
               <div className="column-title-underline"></div>
-              {projects.map((project) => {
-                if (project.status === "Sent" && project.user_name === user) {
-                  return <ProjectCard project={project} />;
-                }
-              })}
+              {projects
+                .filter(
+                  (project) =>
+                    project.status === "Sent" && project.user_name === user
+                )
+                .map((project) => (
+                  <ProjectCard key={project.project_id} project={project} />
+                ))}
             </div>
           ) : (
             <div></div>
@@ -249,14 +253,14 @@ function Dashboard() {
             <div className="column">
               <h2 className="column-title">Complete</h2>
               <div className="column-title-underline"></div>
-              {projects.map((project) => {
-                if (
-                  project.status === "Complete" &&
-                  project.user_name === user
-                ) {
-                  return <ProjectCard project={project} />;
-                }
-              })}
+              {projects
+                .filter(
+                  (project) =>
+                    project.status === "Complete" && project.user_name === user
+                )
+                .map((project) => (
+                  <ProjectCard key={project.project_id} project={project} />
+                ))}
             </div>
           ) : (
             <div></div>
@@ -265,14 +269,14 @@ function Dashboard() {
             <div className="column">
               <h2 className="column-title">Archive</h2>
               <div className="column-title-underline"></div>
-              {projects.map((project) => {
-                if (
-                  project.status === "Archive" &&
-                  project.user_name === user
-                ) {
-                  return <ProjectCard project={project} />;
-                }
-              })}
+              {projects
+                .filter(
+                  (project) =>
+                    project.status === "Archive" && project.user_name === user
+                )
+                .map((project) => (
+                  <ProjectCard key={project.project_id} project={project} />
+                ))}
             </div>
           ) : (
             <div></div>
