@@ -10,18 +10,19 @@ function EditProject() {
   const history = useHistory();
 
   const pageTitle = "Edit Project";
-  async function loadProject() {
-    const abortController = new AbortController();
-    try {
-      const data = await getProject(project_id, abortController.signal);
-      setFormData(data);
-      console.log(formData);
-    } catch (error) {
-      console.error(error);
+  useEffect(() => {
+    async function loadProject() {
+      const abortController = new AbortController();
+      try {
+        const data = await getProject(project_id, abortController.signal);
+        setFormData(data);
+      } catch (error) {
+        console.error(error);
+      }
+      return () => abortController.abort();
     }
-    return () => abortController.abort();
-  }
-  useEffect(loadProject, [project_id]);
+    loadProject();
+  }, [project_id]);
 
   function handleChange(event) {
     const { name, value } = event.target;
