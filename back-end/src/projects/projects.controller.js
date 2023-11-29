@@ -1,4 +1,5 @@
 const projectsService = require("./projects.service");
+const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
 
 // Validation - all specific validations will be preceeded by a 'v' and a short description
 // vProject_Id exists - ensures project id does exist
@@ -129,7 +130,7 @@ async function list(req, res, next) {
   const data = await projectsService.list();
   res.json({ data });
 }
-async function read(req, res, next) {
+function read(req, res, next) {
   const data = res.locals.projectInfo;
   res.json({ data });
 }
@@ -158,21 +159,21 @@ async function search(req, res, next) {
 module.exports = {
   create: [
     createProjectFieldsPresent,
-    userNameExists,
+    asyncErrorBoundary(userNameExists),
     statusPropertyValid,
     tagPropertyValid,
-    create,
+    asyncErrorBoundary(create),
   ],
-  list,
-  read: [projectIdExists, read],
-  updateStatus,
+  list: [asyncErrorBoundary(list)],
+  read: [asyncErrorBoundary(projectIdExists), read],
+  updateStatus: [asyncErrorBoundary(updateStatus)],
   update: [
-    projectIdExists,
-    userNameExists,
+    asyncErrorBoundary(projectIdExists),
+    asyncErrorBoundary(userNameExists),
     statusPropertyValid,
     tagPropertyValid,
-    update,
+    asyncErrorBoundary(update),
   ],
-  delete: [projectIdExists, destroy],
-  search,
+  delete: [asyncErrorBoundary(projectIdExists), asyncErrorBoundary(destroy)],
+  search: [asyncErrorBoundary(search)],
 };

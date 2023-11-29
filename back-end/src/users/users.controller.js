@@ -1,4 +1,5 @@
 const usersService = require("./users.service");
+const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
 
 // VALIDATION: All validation related functions will be denoted with a "v" followed by a one-word description of where they are used
 
@@ -131,10 +132,10 @@ module.exports = {
     allFieldsValid,
     signUpNameLengthAcceptable,
     signUpUserNameValid,
-    signUpUserNameAvailable,
+    asyncErrorBoundary(signUpUserNameAvailable),
     signUpPasswordLengthAcceptable,
-    create,
+    asyncErrorBoundary(create),
   ],
-  read: [userNameExists, read],
-  login: [validateUserLogin, login],
+  read: [asyncErrorBoundary(userNameExists), read],
+  login: [asyncErrorBoundary(validateUserLogin), asyncErrorBoundary(login)],
 };
