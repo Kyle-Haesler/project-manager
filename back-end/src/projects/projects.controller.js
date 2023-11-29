@@ -68,7 +68,7 @@ function createProjectFieldsPresent(req, res, next) {
 
   next();
 }
-// vCreate_Project - user_name validation, make sure the user_name actually exists
+// vCreate and Edit Project - user_name validation, make sure the user_name actually exists
 async function userNameExists(req, res, next) {
   const { user_name } = req.body.data;
   const data = await projectsService.readUser(user_name);
@@ -80,7 +80,7 @@ async function userNameExists(req, res, next) {
   }
   next();
 }
-// vCreate_Project - status validation, make sure status is one of the acceptable values
+// vCreate and Edit Project - status validation, make sure status is one of the acceptable values
 const availableStatuses = [
   "Discovery",
   "Waiting",
@@ -99,7 +99,7 @@ function statusPropertyValid(req, res, next) {
   }
   return next();
 }
-// vCreate_Project - tag validation, make sure the tag is one of the acceptable values
+// vCreate and Edit Project - tag validation, make sure the tag is one of the acceptable values
 const availableColors = [
   "Red",
   "Orange",
@@ -119,7 +119,7 @@ function tagPropertyValid(req, res, next) {
   }
   next();
 }
-
+// Traditional middleware functions
 async function create(req, res) {
   const data = await projectsService.create(req.body.data);
   res.status(201).json({ data });
@@ -166,7 +166,13 @@ module.exports = {
   list,
   read: [projectIdExists, read],
   updateStatus,
-  update,
-  delete: destroy,
+  update: [
+    projectIdExists,
+    userNameExists,
+    statusPropertyValid,
+    tagPropertyValid,
+    update,
+  ],
+  delete: [projectIdExists, destroy],
   search,
 };

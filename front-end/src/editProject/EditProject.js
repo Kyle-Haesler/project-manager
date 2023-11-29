@@ -15,6 +15,7 @@ function EditProject() {
     try {
       const data = await getProject(project_id, abortController.signal);
       setFormData(data);
+      console.log(formData);
     } catch (error) {
       console.error(error);
     }
