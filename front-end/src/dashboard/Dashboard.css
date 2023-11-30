@@ -1,10 +1,13 @@
+.headertest {
+    display: flex;
+    flex-direction: row;
+}
+
 .loginBox {
     display: flex;
-    flex-direction: column;
-    position: fixed;
-    top: 0;
-    right: 0;
-    margin: 10px;
+    flex-direction: row;
+    margin: 5px;
+    justify-content: right;
 }
 
 .login {
@@ -39,7 +42,6 @@
     display: flex;
     flex-direction: column;
     margin: auto;
-    margin-top: 10px;
     width: 600px;
     padding-bottom: 30px;
 }
@@ -65,6 +67,7 @@
     background-color: white;
     border-radius: 9px;
 }
+
 
 .createButton {
     display: flex;
