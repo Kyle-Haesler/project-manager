@@ -1,20 +1,16 @@
-.headertest {
+.header-test{
     display: flex;
-    flex-direction: row;
-}
-
-.loginBox {
-    display: flex;
-    flex-direction: row;
-    margin: 5px;
-    justify-content: right;
+    align-items: center;
+    justify-content: center;
+    padding: 0px;
+    margin-bottom: 20px;
+    margin-top: 0px;
 }
 
 .login {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
+   text-align: right;
+   align-self:last baseline;
+   width: 150px;
     
 }
 
@@ -24,10 +20,7 @@
     
 }
 .login button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100px;
+    
     height: 30px;
     color: white;
     background: #2a00B7;
@@ -38,21 +31,9 @@
 
 }
 
-.headerbox {
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-    width: 600px;
-    padding-bottom: 30px;
-}
-
 .header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 9px;
-    width: 100%;
-    margin-top: 30px;
+    margin: auto;
+    width: 150px;
 }
 
 .headerText{
