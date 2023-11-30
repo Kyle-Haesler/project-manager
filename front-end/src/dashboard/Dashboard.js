@@ -63,11 +63,13 @@ function Dashboard() {
 
   return (
     <div>
-      <div className="header-test">
+      <div className="header-box">
         <div className="header">
           <div className="headerText">Project Manager</div>
           <div className="headerUnderline"></div>
         </div>
+      </div>
+      <div className="login-box">
         <div className="login">
           <div className="loginText">Logged in as: {user}</div>
           <button type="button" onClick={() => logout()}>

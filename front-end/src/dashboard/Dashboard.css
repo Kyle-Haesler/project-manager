@@ -7,9 +7,15 @@
     margin-top: 0px;
 }
 
+.login-box {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 .login {
-   text-align: right;
-   align-self:last baseline;
+    text-align: center;
    width: 150px;
     
 }
@@ -17,10 +23,10 @@
 .loginText {
     color: white;
     font-size: 14px;
+    margin-bottom: 5px;
     
 }
 .login button {
-    
     height: 30px;
     color: white;
     background: #2a00B7;
@@ -28,7 +34,12 @@
     border-color: white;
     font-size: 14px;
     cursor: pointer;
+    text-align: center;
 
+}
+.header-box {
+    display: flex;
+    justify-content: center;
 }
 
 .header {
@@ -65,7 +76,7 @@
 }
 
 .mainContent {
-    background-color: white;
+    background: linear-gradient(#eaeaea, #2a00B7);
     display: flex;
     padding: 20px;
 }
@@ -76,11 +87,11 @@
 }
 
 .column-title {
-    color: #2a00B7;
-    font-size: 34px;
+    color: white;
+    font-size: 30px;
     font-weight: 500;
     text-align: center;
-    background-color: #eaeaea;
+    background-color: #2a00B7;
 }
 
 .column-title-underline{
