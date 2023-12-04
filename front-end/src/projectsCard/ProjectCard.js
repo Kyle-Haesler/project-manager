@@ -98,33 +98,39 @@ function ProjectCard({ project }) {
           <b>Notes: </b>
           {project.notes}
         </p>
-        <button
-          type="button"
-          className="btn btn-primary"
-          onClick={handleMoveBack}
-          style={{ marginRight: "10px" }}
-        >
-          &larr;
-        </button>
-        <button
-          type="button"
-          className="btn btn-secondary"
-          onClick={handleMoveForward}
-          style={{ marginRight: "10px" }}
-        >
-          &rarr;
-        </button>
-        <button
-          type="button"
-          className="btn btn-warning"
-          onClick={handleEdit}
-          style={{ marginRight: "10px" }}
-        >
-          Edit
-        </button>
-        <button type="button" className="btn btn-danger" onClick={handleDelete}>
-          Delete
-        </button>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <button
+            type="button"
+            className="btn btn-primary"
+            onClick={handleMoveBack}
+            style={{ marginRight: "10px" }}
+          >
+            &larr;
+          </button>
+          <button
+            type="button"
+            className="btn btn-secondary"
+            onClick={handleMoveForward}
+            style={{ marginRight: "10px" }}
+          >
+            &rarr;
+          </button>
+          <button
+            type="button"
+            className="btn btn-warning"
+            onClick={handleEdit}
+            style={{ marginRight: "10px" }}
+          >
+            Edit
+          </button>
+          <button
+            type="button"
+            className="btn btn-danger"
+            onClick={handleDelete}
+          >
+            Delete
+          </button>
+        </div>
       </div>
     </div>
   );

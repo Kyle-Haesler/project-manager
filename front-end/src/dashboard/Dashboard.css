@@ -40,6 +40,7 @@
 .header-box {
     display: flex;
     justify-content: center;
+    text-align: center;
 }
 
 .header {
@@ -77,12 +78,13 @@
 
 .mainContent {
     background: linear-gradient(#eaeaea, #2a00B7);
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
     padding: 20px;
 }
 
 .column {
-    flex: 1;
+    
     margin: 0 10px;
 }
 
@@ -105,9 +107,11 @@
 
 .button-container {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     gap: 30px;
     justify-content: center;
+    margin-bottom: 20px;
 }
 .toggle-button {
     display: flex;
@@ -145,3 +149,22 @@
     background: yellow;
     color: black;
 }
+/* MEDIA QUERIES */
+
+@media screen and (max-width: 1600px) {
+    .mainContent {
+      grid-template-columns: repeat(4, 1fr); 
+    }
+  }
+
+  @media screen and (max-width: 1250px) {
+    .mainContent {
+      grid-template-columns: repeat(2, 1fr); 
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .mainContent {
+      grid-template-columns: repeat(1, 1fr); 
+    }
+  }
