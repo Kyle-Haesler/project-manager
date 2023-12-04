@@ -109,3 +109,9 @@
 .error-box {
     background: transparent;
 }
+
+@media screen and (max-width: 625px){
+    .box {
+        width: 400px;
+    }
+}
