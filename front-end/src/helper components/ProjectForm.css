@@ -34,3 +34,24 @@
     color: #797979;
 
 }
+
+@media screen and (max-width: 625px){
+    .input-title {
+        width: 80px;
+    }
+    .input-body{
+        width: 220px;
+    }
+}
+
+@media screen and (max-width: 425px){
+    .input-title {
+        width: 60px;
+        font-size: 12px;
+        padding-left: 10px;;
+    }
+    .input-body{
+        width: 180px;
+        font-size: 12px;
+    }
+}
