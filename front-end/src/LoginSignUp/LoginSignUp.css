@@ -120,6 +120,12 @@
     .submit {
         width: 140px;
     }
+    .input input {
+        width: 230px;
+    }
+    .input img {
+        margin-right: 15px;
+    }
 }
 
 @media screen and (max-width: 425px){
@@ -135,5 +141,9 @@
     }
     .input input {
         font-size: 16px;
+        width: 130px;
+    }
+    .input img {
+        margin-right: 15px;
     }
 }
