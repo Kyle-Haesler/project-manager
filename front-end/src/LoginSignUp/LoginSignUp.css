@@ -114,4 +114,26 @@
     .box {
         width: 400px;
     }
+    .input  {
+        width: 320px;
+    }
+    .submit {
+        width: 140px;
+    }
+}
+
+@media screen and (max-width: 425px){
+    .box {
+        width: 300px;
+    }
+    .input  {
+        width: 220px;
+    }
+    .submit {
+        width: 80px;
+        font-size: 16px;
+    }
+    .input input {
+        font-size: 16px;
+    }
 }
