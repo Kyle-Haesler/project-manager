@@ -37,21 +37,19 @@ The server is located here: https://project-manager-server-c0cu.onrender.com
 - The user can create a new project, edit an existing project, update the status of a project by clicking the arrows
 - The user is also able to filter projects by status and search for projects in the search bar
 
-### /tables/new
+### /new
 
-![New Table](https://github.com/Kyle-Haesler/Capstone-Restaurant-Reservation-System/blob/main/images/NewTableScreenShot.png?raw=true)
+![New Project](https://github.com/Kyle-Haesler/project-manager/blob/main/images/NewProjectScreenShot.png?raw=true)
 
-- Allows user to create a new table
-- Table Name must be atleast two characters and the capacity must be a positive integer, any errors will show up underneath the form
-- After submit, the user is directed back to the dashboard page (today's dashboard)
+- Allows user to create a new project
+- After submit, the user is directed back to the home page
 
-### /reservations/:reservation_id/edit
+### /:project_id
 
-![Edit Reservation](https://github.com/Kyle-Haesler/Capstone-Restaurant-Reservation-System/blob/main/images/EditReservationScreenShot.png?raw=true)
+![Edit Project](https://github.com/Kyle-Haesler/project-manager/blob/main/images/EditProjectScreenShot.png?raw=true)
 
-- Automatically populates specified reservation information to be edited
-- Same validation applies as the new reservation form, any errors will show up below the form
-- After submit, the user is directed to the dashboard page for the date of the newly edited reservation
+- Automatically populates specified project information to be edited
+- After submit, the user is directed to back to the home page
 
 ### /reservation/:reservation_id/seat
 
