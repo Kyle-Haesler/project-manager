@@ -51,94 +51,84 @@ The server is located here: https://project-manager-server-c0cu.onrender.com
 - Automatically populates specified project information to be edited
 - After submit, the user is directed to back to the home page
 
-### /reservation/:reservation_id/seat
-
-![Seat Reservation](https://github.com/Kyle-Haesler/Capstone-Restaurant-Reservation-System/blob/main/images/SeatReservationScreenShot.png?raw=true)
-
-- Allows user to assign a reservation to a table that must be open and have enough room for the party. Any errors will show up below the form
-- After submit, the user is directed back to the dashboard (today's date)
-
-### /search
-
-![Search Reservation](https://github.com/Kyle-Haesler/Capstone-Restaurant-Reservation-System/blob/main/images/SearchReservationScreenShot.png?raw=true)
-
-- Allows user to search for a reservation by phone number
-- All reservations that match or partial match will be shown here, regardless of status
-
 ## Technologies Used
 
-- Front-end: JavaScript, React, Bootstrap
+- Front-end: JavaScript, React, Bootstrap, HTML, CSS
 - Back-end: Node.js, Knex, Express, JavaScript
 - Database: PostgreSQL
 
 ## Features
 
-- Create new reservation
-- Look at reservations for different dates
-- Search reservations by phone number
-- Edit reservation
-- Create new table
-- Assign reservation to table
-- Cancel reservation
-- Free table after customers have finished dining
+- Create new project
+- Edit existing projects
+- Change status of project by clicking arrows
+- Assign projects a color tag
+- Filter projects by status
+- Delete projects
+- Search for projects
 
 ## API Documentation
 
-### Reservations
+### Users
 
-#### /reservations?date=x
-
-- Method: GET
-- Description: Returns a list of reservations on the date given in the parameter, ordered by reservation time.
-
-#### /reservations?mobile_number
-
-- Method: GET
-- Description: Returns a list of reservations whose mobile number matches or partially matches the number given in the parameter, ordered by reservation date.
-
-#### /reservations
+#### /users
 
 - Method: POST
-- Description: Creates a new reservation.
+- Description: Creates a new user that consists of username, email and password
 
-#### /reservations/:reservation_id
-
-- Method: GET
-- Description: Returns the reservation that matches the reservation ID.
-
-#### /reservations/:reservation_id
-
-- Method: PUT
-- Description: Updates the reservation that matches the reservation ID.
-
-#### /reservations/:reservation_id/status
-
-- Method: PUT
-- Description: Changes the status of the reservation that matches the reservation ID.
-
-### Tables
-
-#### /tables
+#### /users/:user_name
 
 - Method: GET
-- Description: Returns the list of tables ordered by the table name.
+- Description: Returns specific user information
 
-#### /tables
+#### /users/:user_name/:password
+
+- Method: GET
+- Description: Returns specific user based on user_name and password for the purpose of logging in
+
+### Projects
+
+router.route("/search/:searchData").get(controller.search);
+router.route("/:project_id/edit").put(controller.update);
+router
+.route("/:project_id")
+.get(controller.read)
+.put(controller.updateStatus)
+.delete(controller.delete);
+router.route("/").get(controller.list).post(controller.create);
+router.use(notFound);
+
+#### /projects
+
+- Method: GET
+- Description: Returns the list of projects for the logged in user
+
+#### /projects
 
 - Method: POST
-- Description: Creates a new table.
+- Description: Creates a new project
 
-#### /tables/:table_id
+#### /projects/:project_id
 
 - Method: GET
-- Description: Returns the table that matches the table ID.
+- Description: Returns the project that matches the project_id for the logged in user
 
-#### /tables/:table_id/seat
+#### /projects/:project_id
 
 - Method: PUT
-- Description: Dual transaction that will seat the table and change the status of the reservation to seated.
+- Description: Updates project status that matches the project_id for the logged in user
 
-#### /tables/:table_id/seat
+#### /projects/:project_id
 
 - Method: DELETE
-- Description: Dual transaction that changes the status of the reservation to finished and opens a table.
+- Description: Deletes project that matches the project_id for the logged in user
+
+#### /projects/:project_id/edit
+
+- Method: PUT
+- Description: Updates project that matches the project_id for the logged in user
+
+#### /projects/search/:searchData
+
+- Method: GET
+- Description: Returns any partial matches for any project information for the logged in user
