@@ -88,16 +88,6 @@ The server is located here: https://project-manager-server-c0cu.onrender.com
 
 ### Projects
 
-router.route("/search/:searchData").get(controller.search);
-router.route("/:project_id/edit").put(controller.update);
-router
-.route("/:project_id")
-.get(controller.read)
-.put(controller.updateStatus)
-.delete(controller.delete);
-router.route("/").get(controller.list).post(controller.create);
-router.use(notFound);
-
 #### /projects
 
 - Method: GET
