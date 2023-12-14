@@ -12,15 +12,17 @@ Inspired by freelance designers' need for managing projects, The Project Manager
 
 ## Installation
 
-To install this application: fork and clone this repository and run npm install.  
+To install this application: fork and clone this repository and run npm install.
+To run this application locally, run npm start:dev
 The live application is running here: https://project-manager-client-3yww.onrender.com  
-Backend URL: https://project-manager-server-c0cu.onrender.com
+The server is located here: https://project-manager-server-c0cu.onrender.com
 
 ## Usage
 
 ### /
 
-![Login / Signup Page](https://github.com/Kyle-Haesler/Capstone-Restaurant-Reservation-System/blob/main/images/DashboardScreenShot.png?raw=true)
+![Signup Page](https://github.com/Kyle-Haesler/project-manager/blob/main/images/SignUpScreenShot.png?raw=true)
+![Login Page](https://github.com/Kyle-Haesler/project-manager/blob/main/images/LogInScreenShot.png?raw=true)
 
 - If the user is not logged in, they will be redirected to the login / signup page
 - If the user has an account, they simply enter their username and password and will be sent to their personalized dashboard page
