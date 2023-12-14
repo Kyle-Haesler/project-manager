@@ -1,1 +1,143 @@
-### Project Manager Application
+# Project Manager Application
+
+Inspired by freelance designers' need for managing projects, The Project Manager Application is a system for keeping track of projects. The application allows the user to log in or sign up for an account and then create, edit, tag, recategorize, filter, search and delete projects. Overall, this application allows a freelance designer, or anyone else who needs to keep track of projects to efficiently manage projects.
+
+## Table of Contents
+
+1. [Installation](#installation)
+2. [Usage](#usage)
+3. [Technologies Used](#technologies-used)
+4. [Features](#features)
+5. [API Documentation](#API-documentation)
+
+## Installation
+
+To install this application: fork and clone this repository and run npm install.  
+The live application is running here: https://project-manager-client-3yww.onrender.com  
+Backend URL: https://project-manager-server-c0cu.onrender.com
+
+## Usage
+
+### /
+
+![Login / Signup Page](https://github.com/Kyle-Haesler/Capstone-Restaurant-Reservation-System/blob/main/images/DashboardScreenShot.png?raw=true)
+
+- If the user is not logged in, they will be redirected to the login / signup page
+- If the user has an account, they simply enter their username and password and will be sent to their personalized dashboard page
+- If the user does not have an account, they can simply sign up and then will be redirected to their new dashboard page
+
+### /reservations/new
+
+![New Reservation](https://github.com/Kyle-Haesler/Capstone-Restaurant-Reservation-System/blob/main/images/NewReservationScreenShot.png?raw=true)
+
+- Allows user to create a new reservation that must be in the future
+- Any validation errors will appear under the form
+- After submit, the use is directed to the dashboard page for the date of their newly created reservation
+
+### /tables/new
+
+![New Table](https://github.com/Kyle-Haesler/Capstone-Restaurant-Reservation-System/blob/main/images/NewTableScreenShot.png?raw=true)
+
+- Allows user to create a new table
+- Table Name must be atleast two characters and the capacity must be a positive integer, any errors will show up underneath the form
+- After submit, the user is directed back to the dashboard page (today's dashboard)
+
+### /reservations/:reservation_id/edit
+
+![Edit Reservation](https://github.com/Kyle-Haesler/Capstone-Restaurant-Reservation-System/blob/main/images/EditReservationScreenShot.png?raw=true)
+
+- Automatically populates specified reservation information to be edited
+- Same validation applies as the new reservation form, any errors will show up below the form
+- After submit, the user is directed to the dashboard page for the date of the newly edited reservation
+
+### /reservation/:reservation_id/seat
+
+![Seat Reservation](https://github.com/Kyle-Haesler/Capstone-Restaurant-Reservation-System/blob/main/images/SeatReservationScreenShot.png?raw=true)
+
+- Allows user to assign a reservation to a table that must be open and have enough room for the party. Any errors will show up below the form
+- After submit, the user is directed back to the dashboard (today's date)
+
+### /search
+
+![Search Reservation](https://github.com/Kyle-Haesler/Capstone-Restaurant-Reservation-System/blob/main/images/SearchReservationScreenShot.png?raw=true)
+
+- Allows user to search for a reservation by phone number
+- All reservations that match or partial match will be shown here, regardless of status
+
+## Technologies Used
+
+- Front-end: JavaScript, React, Bootstrap
+- Back-end: Node.js, Knex, Express, JavaScript
+- Database: PostgreSQL
+
+## Features
+
+- Create new reservation
+- Look at reservations for different dates
+- Search reservations by phone number
+- Edit reservation
+- Create new table
+- Assign reservation to table
+- Cancel reservation
+- Free table after customers have finished dining
+
+## API Documentation
+
+### Reservations
+
+#### /reservations?date=x
+
+- Method: GET
+- Description: Returns a list of reservations on the date given in the parameter, ordered by reservation time.
+
+#### /reservations?mobile_number
+
+- Method: GET
+- Description: Returns a list of reservations whose mobile number matches or partially matches the number given in the parameter, ordered by reservation date.
+
+#### /reservations
+
+- Method: POST
+- Description: Creates a new reservation.
+
+#### /reservations/:reservation_id
+
+- Method: GET
+- Description: Returns the reservation that matches the reservation ID.
+
+#### /reservations/:reservation_id
+
+- Method: PUT
+- Description: Updates the reservation that matches the reservation ID.
+
+#### /reservations/:reservation_id/status
+
+- Method: PUT
+- Description: Changes the status of the reservation that matches the reservation ID.
+
+### Tables
+
+#### /tables
+
+- Method: GET
+- Description: Returns the list of tables ordered by the table name.
+
+#### /tables
+
+- Method: POST
+- Description: Creates a new table.
+
+#### /tables/:table_id
+
+- Method: GET
+- Description: Returns the table that matches the table ID.
+
+#### /tables/:table_id/seat
+
+- Method: PUT
+- Description: Dual transaction that will seat the table and change the status of the reservation to seated.
+
+#### /tables/:table_id/seat
+
+- Method: DELETE
+- Description: Dual transaction that changes the status of the reservation to finished and opens a table.
