@@ -19,7 +19,7 @@ The server is located here: https://project-manager-server-c0cu.onrender.com
 
 ## Usage
 
-### /
+### / loginsignup
 
 ![Signup Page](https://github.com/Kyle-Haesler/project-manager/blob/main/images/SignUpScreenShot.png?raw=true)
 ![Login Page](https://github.com/Kyle-Haesler/project-manager/blob/main/images/LogInScreenShot.png?raw=true)
@@ -28,13 +28,14 @@ The server is located here: https://project-manager-server-c0cu.onrender.com
 - If the user has an account, they simply enter their username and password and will be sent to their personalized dashboard page
 - If the user does not have an account, they can simply sign up and then will be redirected to their new dashboard page
 
-### /reservations/new
+### /
 
-![New Reservation](https://github.com/Kyle-Haesler/Capstone-Restaurant-Reservation-System/blob/main/images/NewReservationScreenShot.png?raw=true)
+![Home Page](https://github.com/Kyle-Haesler/project-manager/blob/main/images/HomePageScreenShot.png?raw=true)
 
-- Allows user to create a new reservation that must be in the future
-- Any validation errors will appear under the form
-- After submit, the use is directed to the dashboard page for the date of their newly created reservation
+- When a user is logged in, they will be directed to the home page, the main page of the application
+- Here, the user is able to view all of their existing projects
+- The user can create a new project, edit an existing project, update the status of a project by clicking the arrows
+- The user is also able to filter projects by status and search for projects in the search bar
 
 ### /tables/new
 
